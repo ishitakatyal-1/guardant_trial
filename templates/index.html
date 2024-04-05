@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+    <head>
+        <title>Arithmetic</title>
+    </head>
+    <body>
+
+        <h1>Input operation request...</h1> <br>
+        <h3>Please input only numbers and/or +/- signs only.</h3>
+
+        <form>
+            <input>
+            <button class="btn btn-primary" href="{% url 'arithmetic_operations:index' %}"> Calculate! </button>
+        </form>
+
+        {% if result %}
+
+            {% if result.success == true %}
+            <p>Result is: {{ result.value }}</p>
+            {% elif result.success == false %}
+            <p>Error is: {{ result.error_message }} </p>
+            {% endif %}
+
+        {% endif %}
+
+    </body>
+</html>

@@ -1,0 +1,26 @@
+# positive case
+123+45-6
+
+# beginner positiona fails
++123+45-6
+-123+45-6
+
+# ender position fails
+123+45-6-
+123+45-6+
+
+# beginner and ender position fails
++123+45-6+
++123+45-6-
+-123+45-6+
+-123+45-6-
+
+# simultaneous occurrences -- min 2
+123++45-6
+123+45--6
+123+-45-6
+123+45-+6
+
+# simultaneous occurrences -- n = 3 (example)
+123++-45-6
+123--+45-6
