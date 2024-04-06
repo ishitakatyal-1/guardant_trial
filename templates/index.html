@@ -1,26 +1,47 @@
 <!DOCTYPE html>
-    <head>
-        <title>Arithmetic</title>
-    </head>
-    <body>
 
-        <h1>Input operation request...</h1> <br>
-        <h3>Please input only numbers and/or +/- signs only.</h3>
+<head>
+    <title>Arithmetic</title>
+</head>
+<script>
+    function handleSubmit() {
+        const exp_val = document.getElementById('expression').value
+        if (exp_val.length <= 0) {
+            alert('Empty expression submitted!')
+            return false;
+        }
+        return true;
+    }
+</script>
 
-        <form>
-            <input>
-            <button class="btn btn-primary" href="{% url 'arithmetic_operations:index' %}"> Calculate! </button>
-        </form>
+<body>
 
-        {% if result %}
+    <h1>Input operation request...</h1> <br>
+    <h3>Please input only numbers and/or +/- signs only.</h3>
 
-            {% if result.success == true %}
-            <p>Result is: {{ result.value }}</p>
-            {% elif result.success == false %}
-            <p>Error is: {{ result.error_message }} </p>
-            {% endif %}
+    <form action="" method="post" onsubmit="return handleSubmit()">
 
+        {% csrf_token %}
+        <input id="expression" name="expression">
+        <input type="submit" value="Calculate">
+
+        <br>
+        <br>
+
+        {% if success == True %}
+        Expression sent: {{expression_sent}}
+        <p>Result is: {{ value }}</p>
+        {% elif success == False %}
+        Expression sent: {{expression_sent}}
+        <p>Error is: {{ message }} </p>
         {% endif %}
 
-    </body>
+        <br>
+
+        <a type="button" href="{{ '' }}">Clear</a>
+
+    </form>
+
+</body>
+
 </html>

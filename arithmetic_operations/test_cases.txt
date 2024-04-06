@@ -24,3 +24,8 @@
 # simultaneous occurrences -- n = 3 (example)
 123++-45-6
 123--+45-6
+
+# invalid extra characters including spaces and potential decimal numbers
+123+4*6
+123 + 4 - 6
+12.3+4
